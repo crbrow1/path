@@ -330,6 +330,12 @@ d3.json("nodes.php", function(json) {
 
 });
 
+.on("mouseover", function(d) {
+    svg.selectAll("node-textbg").sort(function (a, b) { // select the parent and sort the path's
+      if (a.id != d.id) return -1;               // a is not the hovered element, send "a" to the back
+      else return 1;                             // a is the hovered element, bring "a" to the front
+  });
+
 //Window Resize
 window.onresize = time;
 
