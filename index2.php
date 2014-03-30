@@ -304,6 +304,7 @@ d3.json("nodes.php", function(json) {
     node.append("a")
         .append("rect")
         .attr("id", "node-textbg")
+        .attr("class", "node-textbg")
         .attr("x", 5)
         .attr("y", 5)
         .attr("width", 200)
@@ -312,6 +313,8 @@ d3.json("nodes.php", function(json) {
         .style("fill-opacity", .8)
         .style("stroke-opacity", 0);
         
+    node.select("#node-textbg").selectAll(".node-textbg");
+
     node.append("svg:text")
         .attr("class", "node-text")
         .attr("dx", 15)
@@ -329,12 +332,6 @@ d3.json("nodes.php", function(json) {
 	    .style("stroke", "#fff");
 
 });
-
-.on("mouseover", function(d) {
-    svg.selectAll("node-textbg").sort(function (a, b) { // select the parent and sort the path's
-      if (a.id != d.id) return -1;               // a is not the hovered element, send "a" to the back
-      else return 1;                             // a is the hovered element, bring "a" to the front
-  });
 
 //Window Resize
 window.onresize = time;
